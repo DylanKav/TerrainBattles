@@ -1,5 +1,6 @@
 // Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel GeneratePoints
+#include "noiseSimplex.cginc"
 
 AppendStructuredBuffer<float4> test;
 
@@ -8,5 +9,5 @@ vector startingPosition = vector(0,0,0,0);
 [numthreads(8,8,8)]
 void GeneratePoints (uint3 groupThreadID : SV_GroupThreadID, uint3 groupID : SV_GroupID, uint3 dispatchThreadID : SV_DispatchThreadID, uint groupIndex : SV_GroupIndex)
 {
-    test.Append(float4(dispatchThreadID.xyz + startingPosition.xyz, 0));
+    test.Append(float4(dispatchThreadID.xyz + startingPosition.xyz, snoise(dispatchThreadID.xyz + startingPosition.xyz)));
 }

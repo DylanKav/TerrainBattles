@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea445449-5f15-4ac5-b813-15238e27908b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubeCompute.compute" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubeCompute.compute.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classes/TerrainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classes/TerrainManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BufferTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BufferTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GenerateVoxelData.compute" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GenerateVoxelData.compute" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubeCompute.compute.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MarchingCubeCompute.compute.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,17 +26,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.45884147",
-    "rider.run.widget.enabled.cache": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.46307692&quot;,
+    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.15f1\Editor\Unity.exe" />
@@ -55,10 +56,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="23856">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="23856" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -76,6 +77,8 @@
       <updated>1674813188888</updated>
       <workItem from="1674813196647" duration="1780000" />
       <workItem from="1674817938556" duration="26060000" />
+      <workItem from="1674864919108" duration="304000" />
+      <workItem from="1674865327766" duration="1255000" />
     </task>
     <servers />
   </component>
@@ -93,26 +96,26 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/BufferTest.cs</url>
-          <line>22</line>
+          <line>25</line>
           <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\BufferTest.cs" initialLine="19" containingFunctionPresentation="method 'Start'">
             <startOffsets>
-              <option value="784" />
+              <option value="880" />
             </startOffsets>
             <endOffsets>
-              <option value="807" />
+              <option value="903" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/BufferTest.cs</url>
-          <line>32</line>
+          <line>47</line>
           <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\BufferTest.cs" initialLine="30" containingFunctionPresentation="method 'OnDrawGizmos'">
             <startOffsets>
-              <option value="1149" />
+              <option value="1583" />
             </startOffsets>
             <endOffsets>
-              <option value="1164" />
+              <option value="1598" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
