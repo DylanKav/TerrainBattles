@@ -2,12 +2,21 @@
 #pragma kernel GeneratePoints
 #include "noiseSimplex.cginc"
 
-AppendStructuredBuffer<float4> test;
 
+AppendStructuredBuffer<float4> appendBuffer;
+RWStructuredBuffer<float4> test;
+int indexHashValue = 4;
 vector startingPosition = vector(0,0,0,0);
+
+int IndexFromID(uint3 id)
+{
+    return id.z * indexHashValue * indexHashValue + id.y * indexHashValue + indexHashValue.x;
+    
+}
 
 [numthreads(8,8,8)]
 void GeneratePoints (uint3 groupThreadID : SV_GroupThreadID, uint3 groupID : SV_GroupID, uint3 dispatchThreadID : SV_DispatchThreadID, uint groupIndex : SV_GroupIndex)
 {
-    test.Append(float4(dispatchThreadID.xyz + startingPosition.xyz, snoise(dispatchThreadID.xyz + startingPosition.xyz)));
+    test[IndexFromID(dispatchThreadID)] = float4(dispatchThreadID.xyz + startingPosition.xyz, snoise(dispatchThreadID.xyz + startingPosition.xyz));
+    appendBuffer.Append(test[IndexFromID(dispatchThreadID)]);
 }

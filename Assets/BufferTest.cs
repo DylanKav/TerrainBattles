@@ -11,21 +11,26 @@ public class BufferTest : MonoBehaviour
     public Vector3Int ChunkDimensions = new(8, 8, 8);
     public Vector3Int ChunkPosition = new(0, 0, 0);
     private ComputeBuffer PointsBuffer;
+    private ComputeBuffer OutputBuffer;
     private float4[] data;
 
     void Start()
     {
         
-        PointsBuffer = new ComputeBuffer(ChunkDimensions.x * ChunkDimensions.y * ChunkDimensions.z, sizeof(float) * 4, ComputeBufferType.Append);
+        PointsBuffer = new ComputeBuffer(ChunkDimensions.x * ChunkDimensions.y * ChunkDimensions.z, sizeof(float) * 4);
+        OutputBuffer = new ComputeBuffer(ChunkDimensions.x * ChunkDimensions.y * ChunkDimensions.z, sizeof(float) * 4, ComputeBufferType.Append);
         VoxelData.SetBuffer(0, "test", PointsBuffer);
+        VoxelData.SetBuffer(0, "appendBuffer", OutputBuffer);
         VoxelData.SetVector("startingPosition", new Vector4(ChunkPosition.x, ChunkPosition.y, ChunkPosition.z));
         PointsBuffer.SetCounterValue(0);
+        OutputBuffer.SetCounterValue(0);
         VoxelData.Dispatch(0, 1, 1, 1);
-        data = new float4[PointsBuffer.count];
-        PointsBuffer.GetData(data);
+        data = new float4[OutputBuffer.count];
+        OutputBuffer.GetData(data);
         Debug.Log(data.Length);
 
         PointsBuffer?.Release();
+        OutputBuffer?.Release();
         /*foreach (var point in data)
         {
             Debug.Log(point.w);
