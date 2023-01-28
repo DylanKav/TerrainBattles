@@ -1,0 +1,83 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel March
+#include "Triangulation.compute"
+
+struct Triangle {
+    float3 vertexC;
+    float3 vertexB;
+    float3 vertexA;
+};
+
+RWStructuredBuffer<float4> indices;
+AppendStructuredBuffer<Triangle> triangles;
+
+
+
+int indexHashValue = 4;
+int isoLevel = 0;
+
+int IndexFromID(uint3 id)
+{
+    return id.z * indexHashValue * indexHashValue + id.y * indexHashValue + indexHashValue.x;
+    
+}
+
+struct voxel
+{
+    float4 points[8];
+};
+
+
+float3 interpolateVerts(float4 v1, float4 v2) {
+    float t = (isoLevel - v1.w) / (v2.w - v1.w);
+    return v1.xyz + t * (v2.xyz-v1.xyz);
+}
+
+[numthreads(8,8,8)]
+void March (uint3 id : SV_DispatchThreadID)
+{
+    //I think this needs to be here... if you got to the 8th element it would go out of bounds?
+    if(id.x == 8 || id.y == 8 || id.z == 8) return;
+    voxel currentVoxel;
+    float4 voxelData[8] = {
+        indices[IndexFromID(uint3(id.x, id.y, id.z))],
+        indices[IndexFromID(uint3(id.x + 1, id.y, id.z))],
+        indices[IndexFromID(uint3(id.x + 1, id.y, id.z + 1))],
+        indices[IndexFromID(uint3(id.x, id.y, id.z + 1))],
+        indices[IndexFromID(uint3(id.x, id.y + 1, id.z))],
+        indices[IndexFromID(uint3(id.x + 1, id.y + 1, id.z))],
+        indices[IndexFromID(uint3(id.x + 1, id.y + 1, id.z + 1))],
+        indices[IndexFromID(uint3(id.x, id.y + 1, id.z + 1))]
+    };
+    
+    currentVoxel.points = voxelData;
+    
+    int cubeIndex = 0;
+    if (currentVoxel.points[0].w < isoLevel) cubeIndex |= 1;
+    if (currentVoxel.points[1].w < isoLevel) cubeIndex |= 2;
+    if (currentVoxel.points[2].w < isoLevel) cubeIndex |= 4;
+    if (currentVoxel.points[3].w < isoLevel) cubeIndex |= 8;
+    if (currentVoxel.points[4].w < isoLevel) cubeIndex |= 16;
+    if (currentVoxel.points[5].w < isoLevel) cubeIndex |= 32;
+    if (currentVoxel.points[6].w < isoLevel) cubeIndex |= 64;
+    if (currentVoxel.points[7].w < isoLevel) cubeIndex |= 128;
+
+    for (int i = 0; triangulation[cubeIndex][i] != -1; i +=3) {
+        // Get indices of corner points A and B for each of the three edges
+        // of the cube that need to be joined to form the triangle.
+        int a0 = cornerIndexAFromEdge[triangulation[cubeIndex][i]];
+        int b0 = cornerIndexBFromEdge[triangulation[cubeIndex][i]];
+
+        int a1 = cornerIndexAFromEdge[triangulation[cubeIndex][i+1]];
+        int b1 = cornerIndexBFromEdge[triangulation[cubeIndex][i+1]];
+
+        int a2 = cornerIndexAFromEdge[triangulation[cubeIndex][i+2]];
+        int b2 = cornerIndexBFromEdge[triangulation[cubeIndex][i+2]];
+        Triangle tri;
+        tri.vertexA = interpolateVerts(currentVoxel.points[a0], currentVoxel.points[b0]);
+        tri.vertexB = interpolateVerts(currentVoxel.points[a1], currentVoxel.points[b1]);
+        tri.vertexC = interpolateVerts(currentVoxel.points[a2], currentVoxel.points[b2]);
+        triangles.Append(tri);
+    }
+    
+}
