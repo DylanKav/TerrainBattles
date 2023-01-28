@@ -2,21 +2,34 @@
 #pragma kernel GeneratePoints
 #include "noiseSimplex.cginc"
 
+RWStructuredBuffer<float4> points;
+RWBuffer<float> feedbackSampleNum;
 
-AppendStructuredBuffer<float4> appendBuffer;
-RWStructuredBuffer<float4> test;
-int indexHashValue = 4;
-vector startingPosition = vector(0,0,0,0);
+vector centrePosition = vector(0,0,0,0);
+uint sampleNum;
+int chunkSize = 16; //16 is default.
+int noiseHeight = 0;
 
-int IndexFromID(uint3 id)
+int IndexFromCoord(int x, int y, int z)
 {
-    return id.z * indexHashValue * indexHashValue + id.y * indexHashValue + indexHashValue.x;
-    
+    return x + sampleNum * (y + sampleNum * z);
 }
 
-[numthreads(8,8,8)]
-void GeneratePoints (uint3 groupThreadID : SV_GroupThreadID, uint3 groupID : SV_GroupID, uint3 dispatchThreadID : SV_DispatchThreadID, uint groupIndex : SV_GroupIndex)
+
+[numthreads(8,8,1)]
+void GeneratePoints (uint3 id : SV_DispatchThreadID)
 {
-    test[IndexFromID(dispatchThreadID)] = float4(dispatchThreadID.xyz + startingPosition.xyz, snoise(dispatchThreadID.xyz + startingPosition.xyz));
-    appendBuffer.Append(test[IndexFromID(dispatchThreadID)]);
+    //feedbackSampleNum[0] = sampleNum;
+    if (id.x >= sampleNum || id.y >= sampleNum || id.z >= sampleNum) {
+        return;
+    }
+
+    float distanceFactor = (float)chunkSize/(float)sampleNum;
+    float3 position = float3(id.x*distanceFactor, id.y*distanceFactor, id.z*distanceFactor);
+
+    float w = 0.0;
+    if(snoise(float2(position.x, position.z) + noiseHeight < position.y)) w = 1.0;
+    
+    
+    points[IndexFromCoord(id.x, id.y, id.z)] = float4(position, w);
 }

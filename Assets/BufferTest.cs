@@ -1,72 +1,93 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class BufferTest : MonoBehaviour
 {
+    [Header("Sampling Options")]
+    [Range(1, 50)]
+    public int SamplesPerAxis = 16;
+    [Range(16, 32)]
+    public int ChunkSizePerAxis = 16;
+    [Range(0, 16)]
+    public int NoiseHeight = 0;
+    
+    [Header("SerializedFields")]
     [SerializeField] private ComputeShader VoxelData;
     [SerializeField] private ComputeShader MarchingCubes;
-    [SerializeField] private GameObject cube;
-    public Vector3Int ChunkDimensions = new(8, 8, 8);
-    public Vector3Int ChunkPosition = new(0, 0, 0);
-    private ComputeBuffer PointsBuffer;
-    private ComputeBuffer OutputBuffer;
-    private ComputeBuffer TriangleBuffer;
-    private ComputeBuffer TriCountBuffer;
-    private float4[] data;
+    [SerializeField] private MeshFilter meshFilter;
 
-    private void Start()
-    {
-        UpdateChunk();
-        GenerateMesh();
-        ReleaseBuffers();
-    }
 
-    void CreateBuffers()
+    //privates
+    private ComputeBuffer pointsBuffer;
+    private ComputeBuffer feedbackBuffer; //for debugging shader.
+    private Vector4[] dataCollected; //for point gizmos.
+    //marching cubes
+    private ComputeBuffer triangleBuffer;
+    private ComputeBuffer triCountBuffer;
+
+    private void CreateBuffers()
     {
-        int numPoints = ChunkDimensions.x * ChunkDimensions.y * ChunkDimensions.z;
-        int numVoxelsPerAxis = ChunkDimensions.x - 1;
+        int numVoxelsPerAxis = SamplesPerAxis - 1;
         int numVoxels = numVoxelsPerAxis * numVoxelsPerAxis * numVoxelsPerAxis;
         int maxTriangleCount = numVoxels * 5;
         
-        PointsBuffer = new ComputeBuffer(ChunkDimensions.x * ChunkDimensions.y * ChunkDimensions.z, sizeof(float) * 4);
-        OutputBuffer = new ComputeBuffer(ChunkDimensions.x * ChunkDimensions.y * ChunkDimensions.z, sizeof(float) * 4, ComputeBufferType.Append);
-        TriangleBuffer = new ComputeBuffer(maxTriangleCount, sizeof (float) * 3 * 3, ComputeBufferType.Append);
-        TriCountBuffer = new ComputeBuffer (1, sizeof (int), ComputeBufferType.Raw);
-    }
-    void UpdateChunk()
-    {
-        CreateBuffers();
-        PointsBuffer.SetCounterValue(0);
-        OutputBuffer.SetCounterValue(0);
-        VoxelData.SetBuffer(0, "test", PointsBuffer);
-        VoxelData.SetBuffer(0, "appendBuffer", OutputBuffer);
-        VoxelData.SetVector("startingPosition", new Vector4(ChunkPosition.x, ChunkPosition.y, ChunkPosition.z));
+        pointsBuffer = new ComputeBuffer(SamplesPerAxis * SamplesPerAxis * SamplesPerAxis, sizeof(float) * 4);
+        triangleBuffer = new ComputeBuffer (maxTriangleCount, sizeof (float) * 3 * 3, ComputeBufferType.Append);
         
-        VoxelData.Dispatch(0, 1, 1, 1);
-        data = new float4[OutputBuffer.count];
-        
+        triCountBuffer = new ComputeBuffer (1, sizeof (int), ComputeBufferType.Raw);
+        //feedbackBuffer = new ComputeBuffer(1, sizeof(float));
     }
 
-    private void GenerateMesh()
+    private void ClearBuffers()
     {
-        TriangleBuffer.SetCounterValue(0);
-        TriCountBuffer.SetCounterValue(0);
-        OutputBuffer.GetData(data);
-        MarchingCubes.SetBuffer(0, "indices", PointsBuffer);
-        MarchingCubes.SetBuffer(0, "triangles", TriangleBuffer);
-        MarchingCubes.Dispatch(0, 1, 1, 1);
+        pointsBuffer?.Release();
+        feedbackBuffer?.Release();
+        triangleBuffer?.Release();
+        triCountBuffer?.Release();
+        Debug.Log("Buffers released");
+    }
+
+    private void Start()
+    {
+        //Generate Buffers
+        CreateBuffers();
         
-        ComputeBuffer.CopyCount (TriangleBuffer, TriCountBuffer, 0);
+        VoxelData.SetInt("sampleNum", SamplesPerAxis);
+        VoxelData.SetInt("chunkSize", ChunkSizePerAxis);
+        VoxelData.SetInt("noiseHeight", NoiseHeight);
+        VoxelData.SetBuffer(0, "points", pointsBuffer);
+        //VoxelData.SetBuffer(0, "feedbackSampleNum", feedbackBuffer);
+        VoxelData.Dispatch(0, SamplesPerAxis, SamplesPerAxis, SamplesPerAxis);
+        
+        
+        //collect data
+        dataCollected = new Vector4[pointsBuffer.count];
+        pointsBuffer.GetData(dataCollected);
+        
+        //float[] feedbackNum = new float[feedbackBuffer.count];
+        //feedbackBuffer.GetData(feedbackNum);
+        //Debug.Log(feedbackNum[0]);
+        //Release the Buffers!
+        
+        //Time to march!
+        triangleBuffer.SetCounterValue (0);
+        MarchingCubes.SetInt("numPointsPerAxis", SamplesPerAxis);
+        MarchingCubes.SetBuffer(0, "points", pointsBuffer);
+        MarchingCubes.SetBuffer(0, "triangles", triangleBuffer);
+        MarchingCubes.Dispatch(0, SamplesPerAxis, SamplesPerAxis, SamplesPerAxis);
+        
+        //Draw the mesh
+        ComputeBuffer.CopyCount (triangleBuffer, triCountBuffer, 0);
         int[] triCountArray = { 0 };
-        TriCountBuffer.GetData (triCountArray);
+        triCountBuffer.GetData (triCountArray);
         int numTris = triCountArray[0];
 
         // Get triangle data from shader
         Triangle[] tris = new Triangle[numTris];
-        TriangleBuffer.GetData (tris, 0, 0, numTris);
+        triangleBuffer.GetData (tris, 0, 0, numTris);
 
         Mesh mesh = new Mesh();
         mesh.Clear ();
@@ -84,29 +105,18 @@ public class BufferTest : MonoBehaviour
         mesh.triangles = meshTriangles;
 
         mesh.RecalculateNormals ();
-
-        this.GetComponent<MeshFilter>().sharedMesh = mesh;
-
+        meshFilter.sharedMesh = mesh;
+        ClearBuffers();
     }
 
-    private void ReleaseBuffers()
-    {
-        PointsBuffer?.Release();
-        OutputBuffer?.Release();
-        TriangleBuffer?.Release();
-        TriCountBuffer?.Release();
-    }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireCube(new Vector3(ChunkDimensions.x/2 -.5f,ChunkDimensions.y/2 -.5f, ChunkDimensions.z/2 -.5f) + ChunkPosition, ChunkDimensions - Vector3.one);
-        if (data == null) return;
-        foreach (var point in data)
+        if (dataCollected == null) return;
+        foreach (var point in dataCollected)
         {
-            Gizmos.color = point.w>0? Color.black : Color.red;
+            Gizmos.color = Math.Abs(point.w - 1f) < .1f ? Color.white : Color.black;
             Gizmos.DrawCube(new Vector3(point.x, point.y, point.z), new Vector3(.1f, .1f, .1f));
         }
-
     }
     
     struct Triangle {

@@ -4,14 +4,9 @@
     <list default="true" id="ea445449-5f15-4ac5-b813-15238e27908b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/BufferTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BufferTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GenerateVoxelData.compute" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GenerateVoxelData.compute.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubeCompute.compute" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubeCompute.compute.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/noise-simplex.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/noise-simplex.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/noiseSimplex.cginc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/noiseSimplex.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubesShaders/CubeMarch.compute" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MarchingCubesShaders/CubeMarch.compute" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,10 +59,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18780">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="18780" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -89,6 +84,8 @@
       <workItem from="1674865327766" duration="1255000" />
       <workItem from="1674893098527" duration="5092000" />
       <workItem from="1674898248603" duration="1125000" />
+      <workItem from="1674916181638" duration="1765000" />
+      <workItem from="1674918107384" duration="8123000" />
     </task>
     <servers />
   </component>
@@ -117,16 +114,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/BufferTest.cs</url>
-          <line>104</line>
-          <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\BufferTest.cs" initialLine="30" containingFunctionPresentation="method 'OnDrawGizmos'">
+          <line>49</line>
+          <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\BufferTest.cs" initialLine="29" containingFunctionPresentation="method 'ClearBuffers'">
             <startOffsets>
-              <option value="3640" />
+              <option value="1658" />
             </startOffsets>
             <endOffsets>
-              <option value="3655" />
+              <option value="1688" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
