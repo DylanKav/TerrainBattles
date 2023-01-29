@@ -1,0 +1,43 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel GeneratePoints
+#include "noiseSimplex.cginc"
+
+RWStructuredBuffer<float4> points;
+RWBuffer<float> feedbackSampleNum;
+RWTexture2D<float4> noiseTexture;
+
+vector startPosition = vector(0,0,0,0);
+uint sampleNum;
+int chunkSize = 16; //16 is default.
+int noiseHeight = 0;
+bool outputRenderTexture = true;
+
+int IndexFromCoord(int x, int y, int z)
+{
+    return x + sampleNum * (y + sampleNum * z);
+}
+
+
+
+[numthreads(8,8,1)]
+void GeneratePoints (uint3 id : SV_DispatchThreadID)
+{
+    //feedbackSampleNum[0] = sampleNum;
+    if (id.x >= sampleNum || id.y >= sampleNum || id.z >= sampleNum) {
+        return;
+    }
+
+    float distanceFactor = (float)chunkSize/(float)(sampleNum-1);
+    float3 position = float3(id.x*distanceFactor, id.y*distanceFactor, id.z*distanceFactor)+ float3(startPosition.x, startPosition.y, startPosition.z);
+
+    float w = 0.0;
+    float noise = (snoise(float2(position.x/6, position.z/6))) + noiseHeight;
+    
+    if(noise > position.y) w = 1.0;
+    
+    
+    points[IndexFromCoord(id.x, id.y, id.z)] = float4(position, w);
+
+    //if(!outputRenderTexture) return;
+    //noiseTexture[id.xy] = float4(id.x, id.y,);
+}

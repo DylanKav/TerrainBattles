@@ -1,0 +1,28 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel Explode
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWStructuredBuffer<float4> points;
+vector explosionPos = vector(0,0,0,0);
+float explosionRadius = 3.0;
+
+uint sampleNum;
+
+
+int IndexFromCoord(int x, int y, int z)
+{
+    return x + sampleNum * (y + sampleNum * z);
+}
+
+[numthreads(8,8,1)]
+void Explode (uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= sampleNum || id.y >= sampleNum || id.z >= sampleNum) {
+        return;
+    }
+    float4 currentPoint = points[IndexFromCoord(id.x, id.y, id.z)];
+    float distance = pow(pow((currentPoint.x - explosionPos.x), 2) + pow((currentPoint.y - explosionPos.y), 2) + pow((currentPoint.z - explosionPos.z), 2), 0.5);
+    if(distance <= explosionRadius) points[IndexFromCoord(id.x, id.y, id.z)] = float4(currentPoint.xyz, 0);
+    
+}
