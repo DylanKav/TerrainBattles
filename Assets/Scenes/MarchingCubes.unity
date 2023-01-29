@@ -158,10 +158,11 @@ MonoBehaviour:
   StartPosition: {x: 0, y: 0, z: 0}
   SamplesPerAxis: 70
   ChunkSizePerAxis: 16
-  NoiseHeight: 4
+  NoiseHeight: 8
   IsoLevel: 1
   VoxelData: {fileID: 7200000, guid: 17b900df3b4a6f44aa82063ef237cb79, type: 3}
   MarchingCubes: {fileID: 7200000, guid: d1c36e82f05c5e94b98f64e3a444fed7, type: 3}
+  ExplosionShader: {fileID: 7200000, guid: a77acff2fd610414fbf9de2805e105a5, type: 3}
   meshFilter: {fileID: 205377795}
   ShowPoints: 0
   OutputNoiseTexture: 0
@@ -512,10 +513,11 @@ MonoBehaviour:
   StartPosition: {x: 0, y: 0, z: 16}
   SamplesPerAxis: 70
   ChunkSizePerAxis: 16
-  NoiseHeight: 4
+  NoiseHeight: 8
   IsoLevel: 1
   VoxelData: {fileID: 7200000, guid: 17b900df3b4a6f44aa82063ef237cb79, type: 3}
   MarchingCubes: {fileID: 7200000, guid: d1c36e82f05c5e94b98f64e3a444fed7, type: 3}
+  ExplosionShader: {fileID: 7200000, guid: a77acff2fd610414fbf9de2805e105a5, type: 3}
   meshFilter: {fileID: 898966281}
   ShowPoints: 0
   OutputNoiseTexture: 0
