@@ -79,8 +79,20 @@ public class Chunk
                 tris.Add(tris[^1] + 1);
             }
         }
+        
+
+        
 
         mesh.vertices = vertices.ToArray();
+        Vector2[] uvs = new Vector2[mesh.vertices.Length];
+
+        for (int i = 0; i < uvs.Length; i++)
+        {
+            uvs[i] = new Vector2(mesh.vertices[i].x, mesh.vertices[i].z);
+        }
+
+        mesh.uv = uvs;
+        Debug.Log(mesh.uv.Length + " " + mesh.vertices.Length);
         mesh.triangles = tris.ToArray();
         mesh.RecalculateBounds();
         

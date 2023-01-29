@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TerrainManager : MonoBehaviour
 {
-    private Chunk[,,] TerrainData = new Chunk[16, 2, 16];
+    private Chunk[,,] TerrainData = new Chunk[1, 1, 1];
     [SerializeField] private int PerlinMultiplier = 5;
     [SerializeField] private GameObject chunkPrefab;
 
@@ -18,11 +18,11 @@ public class TerrainManager : MonoBehaviour
 
     void CreateTerrain()
     {
-        for (int x = 0; x < 16; x++)
+        for (int x = 0; x < 1; x++)
         {
-            for (int y = 0; y < 2; y++)
+            for (int y = 0; y < 1; y++)
             {
-                for (int z = 0; z < 16; z++)
+                for (int z = 0; z < 1; z++)
                 {
                     var chunkInstance = Instantiate(chunkPrefab, this.transform);
                     chunkInstance.name = "CHUNK:" + x + "/" + y + "/" + z;
