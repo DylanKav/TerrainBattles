@@ -1,4 +1,4 @@
-#ifndef NOISE_SIMPLEX_FUNC
+﻿#ifndef NOISE_SIMPLEX_FUNC
 #define NOISE_SIMPLEX_FUNC
 /*
 

@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/Assets/BufferTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BufferTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MarchingCubesShaders/CubeMarch.compute" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MarchingCubesShaders/CubeMarch.compute" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubesShaders/noiseSimplex.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MarchingCubesShaders/noiseSimplex.cginc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
@@ -18,6 +19,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/BufferTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/CubeMarch.compute" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/NewComputeShader.compute" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.7.3/Tests/Runtime/Shared/090-Vectors-HashCodes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -85,7 +87,9 @@
       <workItem from="1674893098527" duration="5092000" />
       <workItem from="1674898248603" duration="1125000" />
       <workItem from="1674916181638" duration="1765000" />
-      <workItem from="1674918107384" duration="8123000" />
+      <workItem from="1674918107384" duration="8522000" />
+      <workItem from="1674980435516" duration="8017000" />
+      <workItem from="1674999793031" duration="2003000" />
     </task>
     <servers />
   </component>
@@ -114,13 +118,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/BufferTest.cs</url>
-          <line>49</line>
+          <line>65</line>
           <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\BufferTest.cs" initialLine="29" containingFunctionPresentation="method 'ClearBuffers'">
             <startOffsets>
-              <option value="1658" />
+              <option value="2107" />
             </startOffsets>
             <endOffsets>
-              <option value="1688" />
+              <option value="2137" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="8" />
