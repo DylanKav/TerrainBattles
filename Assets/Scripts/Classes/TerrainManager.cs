@@ -5,55 +5,58 @@ using UnityEngine;
 
 public class TerrainManager : MonoBehaviour
 {
-    private Chunk[,,] TerrainData = new Chunk[1, 1, 1];
-    [SerializeField] private int PerlinMultiplier = 5;
+    private GameObject[,,] TerrainData = new GameObject[16, 2, 16];
     [SerializeField] private GameObject chunkPrefab;
+    [Header("Terrain Options")]
+    [Range(1, 100)]
+    [SerializeField] int samplesPerAxis = 16;
+    [Range(16, 32)]
+    [SerializeField] int chunkSizePerAxis = 16;
+    [Range(0, 16)]
+    [SerializeField] int noiseHeight = 0;
+    [SerializeField] float isoLevel = 0.5f;
 
     private void Start()
     {
         CreateTerrain();
-        PerlinNoise();
-        DrawAllChunks();
+        StartCoroutine(EnableTerrain());
+        
     }
 
     void CreateTerrain()
     {
-        for (int x = 0; x < 1; x++)
+        for (int x = 0; x < 8; x++)
         {
-            for (int y = 0; y < 1; y++)
+            for (int y = 0; y < 2; y++)
             {
-                for (int z = 0; z < 1; z++)
+                for (int z = 0; z < 8; z++)
                 {
                     var chunkInstance = Instantiate(chunkPrefab, this.transform);
                     chunkInstance.name = "CHUNK:" + x + "/" + y + "/" + z;
-                    TerrainData[x, y, z] = new Chunk(new Vector3(x * 16, y * 16, z * 16), chunkInstance.GetComponent<MeshFilter>());
+                    var chunk = chunkInstance.GetComponent<BufferTest>();
+                    chunk.StartPosition = new Vector3(x * chunkSizePerAxis, y * chunkSizePerAxis, z * chunkSizePerAxis);
+                    chunk.SamplesPerAxis = samplesPerAxis;
+                    chunk.ChunkSizePerAxis = chunkSizePerAxis;
+                    chunk.NoiseHeight = noiseHeight;
+                    chunk.IsoLevel = isoLevel;
+                    TerrainData[x, y, z] = chunkInstance;
                 }
             }
         }
     }
 
-    void PerlinNoise()
+    IEnumerator EnableTerrain()
     {
-        foreach (var chunk in TerrainData)
+        for (int x = 0; x < 16; x++)
         {
-            chunk.GeneratePerlinNoise(PerlinMultiplier);
-        }
-
-        for (int i = 0; i < 16; i++)
-        {
-            for (int j = 0; j < 16; j++)
+            for (int y = 0; y < 2; y++)
             {
-                Debug.Log(Mathf.PerlinNoise(i, j));
+                for (int z = 0; z < 16; z++)
+                {
+                    yield return new WaitForSeconds(.001f);
+                    if(TerrainData[x, y, z] != null) TerrainData[x, y, z].SetActive(true);
+                }
             }
         }
     }
-
-    void DrawAllChunks()
-    {
-        foreach (var chunk in TerrainData)
-        {
-            chunk.DrawChunk();
-        }
-    }
-    
 }

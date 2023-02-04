@@ -5,6 +5,7 @@
 RWStructuredBuffer<float4> points;
 RWBuffer<float> feedbackSampleNum;
 RWTexture2D<float4> noiseTexture;
+RWTexture2D<float> heightMap;
 
 vector startPosition = vector(0,0,0,0);
 uint sampleNum;
@@ -31,7 +32,7 @@ void GeneratePoints (uint3 id : SV_DispatchThreadID)
     float3 position = float3(id.x*distanceFactor, id.y*distanceFactor, id.z*distanceFactor)+ float3(startPosition.x, startPosition.y, startPosition.z);
 
     float w = 0.0;
-    float noise = (snoise(float2(position.x/6, position.z/6))) + noiseHeight;
+    float noise = (snoise(float2(position.x/15, position.z/15))) + noiseHeight; 
     
     if(noise > position.y) w = 1.0;
     

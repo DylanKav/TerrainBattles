@@ -25,6 +25,8 @@ public class BufferTest : MonoBehaviour
     [SerializeField] private ComputeShader MarchingCubes;
     [SerializeField] private ComputeShader ExplosionShader;
     [SerializeField] private MeshFilter meshFilter;
+    //[SerializeField] RenderTexture noiseTexture;
+    [SerializeField] private Texture2D heightMapImage;
     
     [Header("Gizmos")] 
     public bool ShowPoints = false;
@@ -33,7 +35,7 @@ public class BufferTest : MonoBehaviour
     /// disabling this will improve performance
     /// </summary>
     public bool OutputNoiseTexture = true;
-    public RenderTexture noiseTexture;
+    
 
 
     //privates
@@ -43,11 +45,13 @@ public class BufferTest : MonoBehaviour
     private ComputeBuffer triangleBuffer;
     private ComputeBuffer triCountBuffer;
 
+    private ComputeBuffer heightBuffer;
+
     private void Start()
     {
         //Generate Buffers
         CreateBuffers();
-        if (OutputNoiseTexture) VoxelData.SetTexture(0, "outputRenderTexture", noiseTexture);
+        //if (OutputNoiseTexture) VoxelData.SetTexture(0, "outputRenderTexture", noiseTexture);
         VoxelData.SetVector("startPosition", new Vector4(StartPosition.x, StartPosition.y, StartPosition.z));
         VoxelData.SetBool("outputRenderTexture", OutputNoiseTexture);
         VoxelData.SetInt("sampleNum", SamplesPerAxis);
@@ -76,6 +80,18 @@ public class BufferTest : MonoBehaviour
 
     }
 
+    private void CreateHeightMap()
+    {
+        float[] heightData = new float[heightMapImage.height * heightMapImage.width];
+        var pixelData = heightMapImage.GetPixels();
+        for (int i = 0; i < pixelData.Length; i++)
+        {
+            heightData[i] = pixelData[i].b;
+        }
+        heightBuffer.SetData(heightData);
+        VoxelData.SetBuffer(0, "heightMap", heightBuffer);
+    }
+
     IEnumerator Explosion()
     {
         yield return new WaitForSeconds(5);
@@ -91,8 +107,8 @@ public class BufferTest : MonoBehaviour
         pointsBuffer = new ComputeBuffer(SamplesPerAxis * SamplesPerAxis * SamplesPerAxis, sizeof(float) * 4);
         triangleBuffer = new ComputeBuffer (maxTriangleCount, sizeof (float) * 3 * 3, ComputeBufferType.Append);
         triCountBuffer = new ComputeBuffer (1, sizeof (int), ComputeBufferType.Raw);
-
-        if (OutputNoiseTexture) noiseTexture = new RenderTexture(SamplesPerAxis, SamplesPerAxis, 250);
+        heightBuffer = new ComputeBuffer(heightMapImage.height * heightMapImage.width, sizeof(float));
+        //if (OutputNoiseTexture) noiseTexture = new RenderTexture(SamplesPerAxis, SamplesPerAxis, 250);
         //feedbackBuffer = new ComputeBuffer(1, sizeof(float));
     }
 
@@ -101,6 +117,7 @@ public class BufferTest : MonoBehaviour
         pointsBuffer?.Release();
         triangleBuffer?.Release();
         triCountBuffer?.Release();
+        heightBuffer?.Release();
     }
 
     private void OnApplicationQuit()
