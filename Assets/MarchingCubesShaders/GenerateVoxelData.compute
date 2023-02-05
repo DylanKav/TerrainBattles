@@ -17,8 +17,6 @@ int IndexFromCoord(int x, int y, int z)
     return x + sampleNum * (y + sampleNum * z);
 }
 
-
-
 [numthreads(8,8,1)]
 void GeneratePoints (uint3 id : SV_DispatchThreadID)
 {
