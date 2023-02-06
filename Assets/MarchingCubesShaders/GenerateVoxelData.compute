@@ -5,6 +5,7 @@
 RWStructuredBuffer<float4> points;
 RWBuffer<float> feedbackSampleNum;
 RWTexture2D<float4> noiseTexture;
+RWTexture2D<float> heightMap;
 
 vector startPosition = vector(0,0,0,0);
 uint sampleNum;
@@ -17,10 +18,18 @@ int IndexFromCoord(int x, int y, int z)
     return x + sampleNum * (y + sampleNum * z);
 }
 
+int2 GetNearestHeightmapPoint(float x, float y)
+{
+    int flooredX = floor(x);
+    int flooredY = floor(y);
+    return int2(flooredX * 1, flooredY * 1);
+}
+
+
 [numthreads(8,8,1)]
 void GeneratePoints (uint3 id : SV_DispatchThreadID)
 {
-    //feedbackSampleNum[0] = sampleNum;
+    float w = 0.0;
     if (id.x >= sampleNum || id.y >= sampleNum || id.z >= sampleNum) {
         return;
     }
@@ -28,8 +37,18 @@ void GeneratePoints (uint3 id : SV_DispatchThreadID)
     float distanceFactor = (float)chunkSize/(float)(sampleNum-1);
     float3 position = float3(id.x*distanceFactor, id.y*distanceFactor, id.z*distanceFactor)+ float3(startPosition.x, startPosition.y, startPosition.z);
 
-    float w = 0.0;
-    float noise = (snoise(float2(position.x/6, position.z/6))) + noiseHeight;
+    if(position.y < noiseHeight)
+    {
+        w = 1;
+        points[IndexFromCoord(id.x, id.y, id.z)] = float4(position, w);
+        return;
+    }
+    int2 nearestPoint = GetNearestHeightmapPoint(position.x, position.z);
+    float heightmapValue = heightMap[nearestPoint];
+
+    
+    float noise = (snoise(float2(position.x/15, position.z/15))) + noiseHeight;
+    noise = noise + (heightmapValue*32);
     
     if(noise > position.y) w = 1.0;
     

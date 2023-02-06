@@ -25,15 +25,12 @@ public class BufferTest : MonoBehaviour
     [SerializeField] private ComputeShader MarchingCubes;
     [SerializeField] private ComputeShader ExplosionShader;
     [SerializeField] private MeshFilter meshFilter;
-    
+    [SerializeField] private MeshRenderer meshRenderer;
+
     [Header("Gizmos")] 
     public bool ShowPoints = false;
+    public RenderTexture HeightmapTexture;
     
-    /// <summary>
-    /// disabling this will improve performance
-    /// </summary>
-    public bool OutputNoiseTexture = true;
-    public RenderTexture noiseTexture;
 
 
     //privates
@@ -42,17 +39,18 @@ public class BufferTest : MonoBehaviour
     //marching cubes
     private ComputeBuffer triangleBuffer;
     private ComputeBuffer triCountBuffer;
+    private bool isRendered = false;
 
     private void Start()
     {
         //Generate Buffers
         CreateBuffers();
-        if (OutputNoiseTexture) VoxelData.SetTexture(0, "outputRenderTexture", noiseTexture);
+        //if (OutputNoiseTexture) VoxelData.SetTexture(0, "outputRenderTexture", noiseTexture);
         VoxelData.SetVector("startPosition", new Vector4(StartPosition.x, StartPosition.y, StartPosition.z));
-        VoxelData.SetBool("outputRenderTexture", OutputNoiseTexture);
         VoxelData.SetInt("sampleNum", SamplesPerAxis);
         VoxelData.SetInt("chunkSize", ChunkSizePerAxis);
         VoxelData.SetInt("noiseHeight", NoiseHeight);
+        VoxelData.SetTexture(0, "heightMap", HeightmapTexture);
         VoxelData.SetBuffer(0, "points", pointsBuffer);
         //VoxelData.SetBuffer(0, "feedbackSampleNum", feedbackBuffer);
         VoxelData.Dispatch(0, SamplesPerAxis, SamplesPerAxis, SamplesPerAxis);
@@ -66,8 +64,8 @@ public class BufferTest : MonoBehaviour
             pointsBuffer.GetData(dataCollected);
         }
 
-        GenerateMesh();
-        StartCoroutine(Explosion());
+        //GenerateMesh();
+        //StartCoroutine(Explosion());
         //float[] feedbackNum = new float[feedbackBuffer.count];
         //feedbackBuffer.GetData(feedbackNum);
         //Debug.Log(feedbackNum[0]);
@@ -91,8 +89,7 @@ public class BufferTest : MonoBehaviour
         pointsBuffer = new ComputeBuffer(SamplesPerAxis * SamplesPerAxis * SamplesPerAxis, sizeof(float) * 4);
         triangleBuffer = new ComputeBuffer (maxTriangleCount, sizeof (float) * 3 * 3, ComputeBufferType.Append);
         triCountBuffer = new ComputeBuffer (1, sizeof (int), ComputeBufferType.Raw);
-
-        if (OutputNoiseTexture) noiseTexture = new RenderTexture(SamplesPerAxis, SamplesPerAxis, 250);
+        //if (OutputNoiseTexture) noiseTexture = new RenderTexture(SamplesPerAxis, SamplesPerAxis, 250);
         //feedbackBuffer = new ComputeBuffer(1, sizeof(float));
     }
 
@@ -109,7 +106,6 @@ public class BufferTest : MonoBehaviour
     }
 
 
-
     private void ExplodeTerrain(Vector3 position, float radius)
     {
         if (pointsBuffer == null) Debug.Log("Buffer is null");
@@ -122,8 +118,20 @@ public class BufferTest : MonoBehaviour
         GenerateMesh();
     }
 
-    private void GenerateMesh()
+    public void ClearMesh()
     {
+        meshRenderer.enabled = false;
+    }
+
+    public void MakeVisible()
+    {
+        if (!isRendered) GenerateMesh();
+        meshRenderer.enabled = true;
+    }
+    
+    public void GenerateMesh()
+    {
+        isRendered = true;
         //Time to march!
         //int numVoxelsPerAxis = SamplesPerAxis - 1;
         //int numThreadsPerAxis = Mathf.CeilToInt (numVoxelsPerAxis / (float) 8);
