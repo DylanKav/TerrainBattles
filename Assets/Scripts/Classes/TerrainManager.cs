@@ -54,19 +54,27 @@ public class TerrainManager : MonoBehaviour
     }
     
 
-    private void Start()
+    IEnumerator Start()
     {
         TerrainData = new GameObject[(int)terrainSize.x, (int)terrainSize.y, (int)terrainSize.z];
         CreateTerrain();
+        yield return new WaitForSeconds(.1f);
+        UpdateCameraChunk();
+        DrawVisibleChunks(cameraCurrentChunk);
         //StartCoroutine(EnableTerrain());
         
     }
 
     private void Update()
     {
+        UpdateCameraChunk();
+    }
+
+    private void UpdateCameraChunk()
+    {
         var position = mainCamera.transform.position;
         var x = (int)position.x / chunkSizePerAxis;
-        var y = (int)position.y / chunkSizePerAxis;
+        var y = 0;
         var z = (int)position.z / chunkSizePerAxis;
         CameraCurrentChunk = new Vector3(x, y, z);
     }

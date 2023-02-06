@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,10 +8,22 @@ public class OrbitalCamera : MonoBehaviour
 {
     [SerializeField] private Camera orbitalCam;
     [SerializeField] private Transform player;
-    [SerializeField] [Range(0, 5)]private float currentDistance = 5f;
+    [SerializeField] [Range(5, 30)]private float currentDistance = 5f;
+    [SerializeField] private int maxZoomDistance = 30;
+    [SerializeField] private int minZoomDistance = 5;
     [SerializeField] [Range(0, 5)]private float followStrength = 0.5f;
     public float horCamAngle = 0f;
 
+    public float Zoom
+    {
+        get => currentDistance;
+        set
+        {
+            currentDistance += (-1)*value;
+            if (currentDistance < minZoomDistance) currentDistance = minZoomDistance;
+            if (currentDistance > maxZoomDistance) currentDistance = maxZoomDistance;
+        }
+    }
     public void UpdateCamAngle(Vector2 delta, bool invertCamControls, float cameraDampening)
     {
         horCamAngle += invertCamControls ? -delta.x / cameraDampening : delta.x / cameraDampening;

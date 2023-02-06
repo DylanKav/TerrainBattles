@@ -26,6 +26,7 @@ public class BufferTest : MonoBehaviour
     [SerializeField] private ComputeShader ExplosionShader;
     [SerializeField] private MeshFilter meshFilter;
     [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private MeshCollider collider;
 
     [Header("Gizmos")] 
     public bool ShowPoints = false;
@@ -169,6 +170,7 @@ public class BufferTest : MonoBehaviour
 
         mesh.RecalculateNormals ();
         meshFilter.sharedMesh = mesh;
+        collider.sharedMesh = mesh;
     }
 
     private void OnDrawGizmos()

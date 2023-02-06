@@ -26,25 +26,42 @@ public class PlayerInputListener : MonoBehaviour
     [Header("Mandatory Fields")]
     [SerializeField] private OrbitalCamera cameraControls;
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private Rigidbody rigidBody;
+
     [SerializeField] private Camera cam;
     [SerializeField] private AnimationController animController;
     
     [Header("Variables used for FX")]
-    private bool _controlDisabled = false;
+    private bool _ragdollMode = false;
 
     public float _isJumping = 0;
     private Vector3 playerVelocity;
 
-    public void SetRagdollMode(bool value)
+    public void SetRagdollMode(bool value, Vector3 direction, float pushForce)
     {
         //used for ragdoll mode.
-        _controlDisabled = value;
+        _ragdollMode = value;
         //characterController.constraints = RigidbodyConstraints.None;
+        characterController.enabled = !value;
+        rigidBody.isKinematic = !value;
+        rigidBody.AddForce(direction * pushForce, ForceMode.Impulse);
+        if(value) animController.SetState(0);
+    }
+    
+    public void SetRagdollMode(bool value, Vector3 direction, float pushForce, Vector3 positionOfForce)
+    {
+        //used for ragdoll mode.
+        _ragdollMode = value;
+        //characterController.constraints = RigidbodyConstraints.None;
+        characterController.enabled = !value;
+        rigidBody.isKinematic = !value;
+        rigidBody.AddForceAtPosition(direction * pushForce, positionOfForce, ForceMode.Impulse);
+        if(value) animController.SetState(0);
     }
     
     public void PlayerMove(InputAction.CallbackContext context)
     {
-        if (_controlDisabled) return;
+        if (_ragdollMode) return;
         _movementInput = context.ReadValue<Vector2>();
         animController.IsRunning = _movementInput != Vector2.zero;
 
@@ -52,7 +69,7 @@ public class PlayerInputListener : MonoBehaviour
 
     public void PlayerJump(InputAction.CallbackContext context)
     {
-        if (_controlDisabled) return;
+        if (_ragdollMode) return;
         _isJumping = context.ReadValue<float>();
     }
     
@@ -60,6 +77,15 @@ public class PlayerInputListener : MonoBehaviour
     {
         _camMovementEnabled = context.ReadValueAsButton();
         if (_camMovementEnabled) startMouse = Mouse.current.position.ReadValue();
+    }
+    
+    public void MouseScroll(InputAction.CallbackContext context)
+    {
+        
+        if (_ragdollMode) return;
+        var scroll = context.ReadValue<Vector2>();
+        cameraControls.Zoom = (float)(scroll.y * 0.5d);
+        Debug.Log(scroll);
     }
     
     public void CameraMove(InputAction.CallbackContext context)
@@ -76,9 +102,10 @@ public class PlayerInputListener : MonoBehaviour
 
     private void Update()
     {
+        if (_ragdollMode) return;
         var groundedPlayer = characterController.isGrounded;
-
-        Vector3 move = new Vector3(_movementInput.x, 0, _movementInput.y);
+        Vector3 move = new Vector3(0, 0, 0);
+        if(!_ragdollMode) move = new Vector3(_movementInput.x, 0, _movementInput.y);
         var movement = cam.transform.TransformDirection(move);
         movement.y = 0;
         characterController.Move(movement * (Time.deltaTime * speed));

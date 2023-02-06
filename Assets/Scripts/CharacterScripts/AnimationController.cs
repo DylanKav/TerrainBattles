@@ -9,7 +9,29 @@ public class AnimationController : MonoBehaviour
     private static readonly int Jumping = Animator.StringToHash("_isJumping");
     private static readonly int Walking = Animator.StringToHash("_isWalking");
     private static readonly int Running = Animator.StringToHash("_isRunning");
-    
+    [SerializeField] private Rigidbody[] RagdollParts;
+    [SerializeField] private Collider[] RagdollColliders;
+    [SerializeField] private Collider playerCollider;
+
+    private void RagdollMode(bool isOn)
+    {
+        Controller.enabled = !isOn;
+        //playerCollider.enabled = !isOn;
+        if (isOn)
+        {
+            foreach (var part in RagdollParts)
+            {
+                part.isKinematic = !isOn;
+            }
+
+            /*
+            foreach (var collider in RagdollColliders)
+            {
+                collider.enabled = isOn;
+            }
+            */
+        }
+    }
 
     public bool IsJumping
     {
@@ -60,6 +82,11 @@ public class AnimationController : MonoBehaviour
 
     public void SetState(int value)
     {
+        if (value == 0)
+        {
+            RagdollMode(true);
+            return;
+        }
         if (value > 4)
         {
             value -= 4;

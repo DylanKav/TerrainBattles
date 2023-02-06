@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class KnockbackHit : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private float force = 5f;
     void Start()
     {
         
@@ -14,5 +14,10 @@ public class KnockbackHit : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Kaboom");
+        PlayerInputListener listener;
+        other.TryGetComponent<PlayerInputListener>(out listener);
+        
+        var position = this.transform.position;
+        listener.SetRagdollMode(true, other.transform.position - position, force, other.ClosestPoint(position));
     }
 }
