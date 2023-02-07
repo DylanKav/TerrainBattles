@@ -18,6 +18,9 @@ public class BufferTest : MonoBehaviour
     [Range(0, 16)]
     public int NoiseHeight = 0;
 
+    public int NoiseZoom = 15;
+    public int HillHeight = 3;
+
     public float IsoLevel = 0.5f;
     
     [Header("SerializedFields")]
@@ -51,6 +54,8 @@ public class BufferTest : MonoBehaviour
         VoxelData.SetInt("chunkSize", ChunkSizePerAxis);
         VoxelData.SetInt("noiseHeight", NoiseHeight);
         VoxelData.SetTexture(0, "heightMap", HeightmapTexture);
+        VoxelData.SetInt("noiseZoom", NoiseZoom);
+        VoxelData.SetInt("hillHeight", HillHeight);
         VoxelData.SetBuffer(0, "points", pointsBuffer);
         //VoxelData.SetBuffer(0, "feedbackSampleNum", feedbackBuffer);
         VoxelData.Dispatch(0, SamplesPerAxis, SamplesPerAxis, SamplesPerAxis);
@@ -180,7 +185,7 @@ public class BufferTest : MonoBehaviour
         foreach (var point in dataCollected)
         {
             Gizmos.color = point.w > IsoLevel? Color.white : Color.black;
-            Gizmos.DrawCube(new Vector3(point.x, point.y, point.z), new Vector3(.1f, .1f, .1f));
+            Gizmos.DrawCube(new Vector3(point.x, point.y, point.z), new Vector3(point.w/8, point.w/8, point.w/8));
         }
     }
     

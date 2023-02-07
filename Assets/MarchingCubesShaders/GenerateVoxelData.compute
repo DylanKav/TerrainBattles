@@ -12,6 +12,8 @@ uint sampleNum;
 int chunkSize = 16; //16 is default.
 int noiseHeight = 0;
 bool outputRenderTexture = true;
+int noiseZoom = 15;
+int hillHeight = 3;
 
 int IndexFromCoord(int x, int y, int z)
 {
@@ -25,6 +27,10 @@ int2 GetNearestHeightmapPoint(float x, float y)
     return int2(flooredX * 1, flooredY * 1);
 }
 
+float random (float2 uv)
+{
+    return frac(sin(dot(uv,float2(12.9898,78.233)))*43758.5453123);
+}
 
 [numthreads(8,8,1)]
 void GeneratePoints (uint3 id : SV_DispatchThreadID)
@@ -36,24 +42,47 @@ void GeneratePoints (uint3 id : SV_DispatchThreadID)
 
     float distanceFactor = (float)chunkSize/(float)(sampleNum-1);
     float3 position = float3(id.x*distanceFactor, id.y*distanceFactor, id.z*distanceFactor)+ float3(startPosition.x, startPosition.y, startPosition.z);
-
+    float positionAbove = id.y+1*distanceFactor + startPosition.y;
     if(position.y < noiseHeight)
     {
-        w = 1;
+        w = 27;
         points[IndexFromCoord(id.x, id.y, id.z)] = float4(position, w);
         return;
     }
     int2 nearestPoint = GetNearestHeightmapPoint(position.x, position.z);
     float heightmapValue = heightMap[nearestPoint];
 
+    float singleWeight = 1/27;
+    float pointWeight = 0;
+
     
+    for(int x = -1; x <= 1; x++)
+    {
+        for(int y = -1; y <= 1; y++)
+        {
+            for(int z = -1; z <= 1; z++)
+            {
+                float3 pt = float3(x*distanceFactor, y*distanceFactor, z*distanceFactor);
+                float noise = (snoise(float2((position.x + pt.x)/noiseZoom, (position.z + pt.z)/noiseZoom))) * hillHeight + noiseHeight;
+                noise = noise + (heightmapValue*32);
+                if(noise > (pt.y + position.y)) pointWeight += 1;
+            }
+        }
+    }
+    /*
     float noise = (snoise(float2(position.x/15, position.z/15))) + noiseHeight;
     noise = noise + (heightmapValue*32);
     
-    if(noise > position.y) w = 1.0;
-    
-    
-    points[IndexFromCoord(id.x, id.y, id.z)] = float4(position, w);
+    //if(noise > position.y) w = random(float2(position.x, position.z));
+    if(noise > positionAbove)
+    {
+        w = 1;
+    } else if(noise > position.y)
+    {
+        w = random(float2(position.x, position.z));
+    }
+    */
+    points[IndexFromCoord(id.x, id.y, id.z)] = float4(position, pointWeight);
 
     //if(!outputRenderTexture) return;
     //noiseTexture[id.xy] = float4(id.x, id.y,);

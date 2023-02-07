@@ -200,8 +200,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426431359}
-  m_LocalRotation: {x: 0.0039035417, y: -0.98579764, z: 0.16451564, w: 0.033504248}
-  m_LocalPosition: {x: 74.3498, y: 41.88744, z: 174.95508}
+  m_LocalRotation: {x: -0.11291483, y: 0.8556831, z: -0.21181273, w: -0.45846725}
+  m_LocalPosition: {x: 126.4369, y: 49.31927, z: 77.155846}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -496,8 +496,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378246842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 254.4375, y: 9.18, z: 256.0599}
-  m_LocalScale: {x: 50.88287, y: 1, z: 51.194942}
+  m_LocalPosition: {x: 254.6797, y: 9.86, z: 257.2311}
+  m_LocalScale: {x: 51.03389, y: 1, z: 51.415276}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -533,10 +533,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainSize: {x: 32, y: 3, z: 32}
-  samplesPerAxis: 16
+  samplesPerAxis: 12
   chunkSizePerAxis: 16
   noiseHeight: 4
-  isoLevel: 0.5
+  isoLevel: 13.5
+  noiseZoom: 30
+  hillHeight: 2
   heightMapImage: {fileID: 2800000, guid: b501d51ee83f7964eb3db86aa469ea6f, type: 3}
   chunkPrefab: {fileID: 1820170121772708998, guid: a1a5ad1e74a0348499dca83fab985163,
     type: 3}

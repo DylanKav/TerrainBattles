@@ -17,6 +17,8 @@ public class TerrainManager : MonoBehaviour
     [Range(0, 16)]
     [SerializeField] int noiseHeight = 0;
     [SerializeField] float isoLevel = 0.5f;
+    [SerializeField] int noiseZoom = 15;
+    [SerializeField] private int hillHeight = 3;
     [SerializeField] private Texture heightMapImage;
     [SerializeField] private GameObject chunkPrefab;
 
@@ -58,10 +60,11 @@ public class TerrainManager : MonoBehaviour
     {
         TerrainData = new GameObject[(int)terrainSize.x, (int)terrainSize.y, (int)terrainSize.z];
         CreateTerrain();
-        //StartCoroutine(EnableTerrain());
+        StartCoroutine(EnableTerrain());
         
     }
 
+    /*
     private void Update()
     {
         var position = mainCamera.transform.position;
@@ -70,6 +73,7 @@ public class TerrainManager : MonoBehaviour
         var z = (int)position.z / chunkSizePerAxis;
         CameraCurrentChunk = new Vector3(x, y, z);
     }
+    */
 
     void CreateTerrain()
     {
@@ -94,6 +98,8 @@ public class TerrainManager : MonoBehaviour
                     chunk.NoiseHeight = noiseHeight;
                     chunk.IsoLevel = isoLevel;
                     chunk.HeightmapTexture = heightMapRT;
+                    chunk.NoiseZoom = noiseZoom;
+                    chunk.HillHeight = hillHeight;
                     TerrainData[x, y, z] = chunkInstance;
                 }
             }
@@ -102,14 +108,15 @@ public class TerrainManager : MonoBehaviour
 
     IEnumerator EnableTerrain()
     {
-        for (int x = 0; x < 32; x++)
+        for (int x = 0; x < terrainSize.x; x++)
         {
-            for (int y = 0; y < 3; y++)
+            for (int y = 0; y < terrainSize.y; y++)
             {
-                for (int z = 0; z < 32; z++)
+                for (int z = 0; z < terrainSize.z; z++)
                 {
-                    yield return new WaitForSeconds(.001f);
-                    if(TerrainData[x, y, z] != null) TerrainData[x, y, z].SetActive(true);
+                    yield return new WaitForSeconds(0f);
+                    var chunkComponent = TerrainData[x, y, z].GetComponent<BufferTest>();
+                    chunkComponent.MakeVisible();
                 }
             }
         }

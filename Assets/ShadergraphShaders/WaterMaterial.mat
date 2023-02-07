@@ -35,13 +35,24 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Deph: -6.52
+    - _Deph: -59.25
+    - _DepthColourFade: 14
+    - _Metallic: 0
+    - _Occlusion: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Strength: 0.06
+    - _Smoothness: 0.5
+    - _Strength: 0
+    - _Transparency: 0.75
+    - _WaveHeight: 0.3
+    - _WaveSpeed: 1
+    - _WaveStrength: 0.3
     m_Colors:
-    - _DeepWaterColour: {r: 0, g: 0.26082432, b: 0.9716981, a: 0.65882355}
-    - _ShallowWaterColour: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+    - _DeepColour: {r: 0.21026164, g: 0.31724745, b: 0.99056596, a: 1}
+    - _DeepWaterColour: {r: 0.4345407, g: 0.49772543, b: 0.99056596, a: 1}
+    - _ShallowColour: {r: 0.28773573, g: 0.8650469, b: 1, a: 1}
+    - _ShallowWaterColour: {r: 0.4313725, g: 0.47450978, b: 0.8117647, a: 1}
+    - _WaveDirection: {r: 12, g: 12, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3405313927278322196
 MonoBehaviour:
