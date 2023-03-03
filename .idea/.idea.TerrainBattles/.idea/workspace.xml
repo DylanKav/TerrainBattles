@@ -3,14 +3,35 @@
   <component name="ChangeListManager">
     <list default="true" id="ea445449-5f15-4ac5-b813-15238e27908b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BufferTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BufferTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BufferTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BufferTest.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Chunk.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chunk.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubesShaders/CubeMarch.compute" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MarchingCubesShaders/CubeMarch.compute" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classes/TerrainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classes/TerrainManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ShadergraphShaders/WaterShader.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/WaterShader.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Heightmap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Heightmap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HeightmapRender.renderTexture" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HeightmapRender.renderTexture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HeightmapTest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HeightmapTest.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Readme.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Readme.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TerrainMaterialTest.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TerrainMaterialTest.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons/URP.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons/URP.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Layout.wlt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Layout.wlt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Readme.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Readme.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,10 +40,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/b1/51ff931e/Rect.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/BufferTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/CubeMarch.compute" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/ExplodeTerrain.compute" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OnTerrainFeatures/CleanupObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OnTerrainFeatures/DestructableObjectEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OnTerrainFeatures/TerrainFeaturesManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.7.3/Tests/Runtime/Shared/090-Vectors-HashCodes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -72,10 +95,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="26732">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="26732" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -104,6 +127,9 @@
       <workItem from="1675506759100" duration="2366000" />
       <workItem from="1675510790994" duration="17327000" />
       <workItem from="1675703817293" duration="9496000" />
+      <workItem from="1675788082583" duration="7324000" />
+      <workItem from="1675890806983" duration="3117000" />
+      <workItem from="1675976086139" duration="1778000" />
     </task>
     <servers />
   </component>
@@ -131,14 +157,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/BufferTest.cs</url>
-          <line>69</line>
-          <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\BufferTest.cs" initialLine="64" containingFunctionPresentation="method 'Start'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/OnTerrainFeatures/TerrainFeaturesManager.cs</url>
+          <line>39</line>
+          <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\Scripts\OnTerrainFeatures\TerrainFeaturesManager.cs" initialLine="41" containingFunctionPresentation="method 'GeneratePosition'">
             <startOffsets>
-              <option value="2249" />
+              <option value="1450" />
             </startOffsets>
             <endOffsets>
-              <option value="2250" />
+              <option value="1668" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />

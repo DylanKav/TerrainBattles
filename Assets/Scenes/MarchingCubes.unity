@@ -503,6 +503,89 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1769232503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769232505}
+  - component: {fileID: 1769232504}
+  m_Layer: 0
+  m_Name: OnTerrainFeatures
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1769232504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769232503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9f0fa81501e9c4daba799c0c1315f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainStart: {x: 100, y: 0, z: 100}
+  terrainEnd: {x: 250, y: 0, z: 250}
+  SpawnList:
+  - FeaturePrefab: {fileID: 7829040661154029433, guid: 618b9e757e67c304695d70301b177188,
+      type: 3}
+    QuantityOnTerrain: 13
+  - FeaturePrefab: {fileID: 942367379844571284, guid: 9fc61021ee6046041adae9def8dcd92d,
+      type: 3}
+    QuantityOnTerrain: 6
+  - FeaturePrefab: {fileID: 8808529633460583988, guid: 76fee8ef59117914b8a90466afaaf479,
+      type: 3}
+    QuantityOnTerrain: 5
+  - FeaturePrefab: {fileID: 621621364546801785, guid: 85f27e9a06257a14d86cf13d52a0918f,
+      type: 3}
+    QuantityOnTerrain: 17
+  - FeaturePrefab: {fileID: 790108568361791783, guid: 7e111102d3abeef4e87d59ff988a8788,
+      type: 3}
+    QuantityOnTerrain: 3
+  - FeaturePrefab: {fileID: 280768628184280791, guid: 44af9561792030c4dada800b1a37cd50,
+      type: 3}
+    QuantityOnTerrain: 4
+  - FeaturePrefab: {fileID: 2384307144522657308, guid: e5027239e03b16e45bca5c791f266c46,
+      type: 3}
+    QuantityOnTerrain: 2
+  - FeaturePrefab: {fileID: 125692606643464065, guid: a36db814172b07647a8b5cd2df971373,
+      type: 3}
+    QuantityOnTerrain: 50
+  - FeaturePrefab: {fileID: 2069757718606141899, guid: 50b98c5607b900b4b8cbb56b60ae93f7,
+      type: 3}
+    QuantityOnTerrain: 25
+  - FeaturePrefab: {fileID: 7711643451658802530, guid: 83d9065a00f2c2440ae4cdc244271c69,
+      type: 3}
+    QuantityOnTerrain: 8
+  - FeaturePrefab: {fileID: 5538452064238123277, guid: 4eb7b05c717535b458efe3dc7307ef65,
+      type: 3}
+    QuantityOnTerrain: 30
+  - FeaturePrefab: {fileID: 8509391969630625190, guid: d1cb9df53e366a04e9a0d2c96f9af09a,
+      type: 3}
+    QuantityOnTerrain: 30
+--- !u!4 &1769232505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769232503}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1992257327
 GameObject:
   m_ObjectHideFlags: 0
