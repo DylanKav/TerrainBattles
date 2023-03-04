@@ -85,7 +85,6 @@ public class PlayerInputListener : MonoBehaviour
         if (_ragdollMode) return;
         var scroll = context.ReadValue<Vector2>();
         cameraControls.Zoom = (float)(scroll.y * 0.5d);
-        Debug.Log(scroll);
     }
     
     public void CameraMove(InputAction.CallbackContext context)

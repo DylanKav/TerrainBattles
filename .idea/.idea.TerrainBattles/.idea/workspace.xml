@@ -2,48 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea445449-5f15-4ac5-b813-15238e27908b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Chunk.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chunk.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Heightmap.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Heightmap.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/HeightmapRender.renderTexture" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/HeightmapRender.renderTexture.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/HeightmapTest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/HeightmapTest.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes/Volume Profile.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes/Volume Profile.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/FarDistanceWater.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/FarDistanceWater.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/TerrainMaterial.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/TerrainMaterial.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/TerrainShader.shadergraph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/TerrainShader.shadergraph.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/WaterMaterial.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/WaterMaterial.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/WaterShader.shadergraph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ShadergraphShaders/WaterShader.shadergraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Core/PlayerState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BufferTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BufferTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputActions/MainPlayerInputs.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputActions/MainPlayerInputs.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CharacterController.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CharacterController.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MarchingCubes.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/AnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/AnimationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/OrbitalCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/OrbitalCamera.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/PlayerInputListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/PlayerInputListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classes/TerrainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classes/TerrainManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerEffects/KnockbackHit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerEffects/KnockbackHit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Witch/Colours/Coat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Witch/Colours/Coat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Witch/Colours/Hair.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Witch/Colours/Hair.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Witch/Colours/Hat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Witch/Colours/Hat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Witch/Colours/Legs.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Witch/Colours/Legs.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Witch/Colours/Skin.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Witch/Colours/Skin.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Witch/Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Witch/Idle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Witch/Running.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Witch/Running.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Witch/WitchController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Witch/WitchController.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,6 +42,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.46341464&quot;,
     &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -110,10 +73,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="24892">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="1064">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="24892" />
+      <option name="pid" value="1064" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -143,6 +106,8 @@
       <workItem from="1675510790994" duration="17327000" />
       <workItem from="1675603411087" duration="4654000" />
       <workItem from="1675627120617" duration="1795000" />
+      <workItem from="1677845874264" duration="2829000" />
+      <workItem from="1677864436945" duration="5684000" />
     </task>
     <servers />
   </component>
@@ -169,19 +134,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Classes/TerrainManager.cs</url>
-          <line>62</line>
-          <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\Scripts\Classes\TerrainManager.cs" initialLine="61" containingFunctionPresentation="method 'Start'">
-            <startOffsets>
-              <option value="1558" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1596" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/CharacterScripts/OrbitalCamera.cs</url>
           <line>21</line>
