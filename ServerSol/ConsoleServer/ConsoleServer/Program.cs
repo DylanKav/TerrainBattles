@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using ConsoleServer.Properties.Managers;
 using LiteNetLib;
 using LiteNetLib.Utils;
 using TerrainBattlesCore.Core;
@@ -13,28 +14,29 @@ namespace ConsoleServer
     {
         static EventBasedNetListener listener = new EventBasedNetListener();
         static NetManager server = new NetManager(listener);
+
+        private static PlayerManager _playerManager = new PlayerManager(30000); //make this int value public so that people can change the tick seconds...;
         
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            server.Start(9050 /* port */);
+            server.Start(9050);
+            Console.WriteLine("Server started...");
             listener.ConnectionRequestEvent += request =>
             {
-                if(server.ConnectedPeersCount < 10 /* max connections */)
+                Console.WriteLine("Received Request");
+                if(server.ConnectedPeersCount < 10)
                     request.AcceptIfKey("SomeConnectionKey");
                 else
                     request.Reject();
             };
-            
-            listener.PeerConnectedEvent += peer =>
-            {
-                Console.WriteLine("We got connection: {0}", peer.EndPoint); // Show peer ip
-                NetDataWriter writer = new NetDataWriter();                 // Create writer class
-                writer.Put("Hello, you're connected to the server!");                                // Put some string
-                peer.Send(writer, DeliveryMethod.ReliableOrdered);             // Send with reliability
-            };
 
+            listener.PeerConnectedEvent += OnPlayerConnected;
+            listener.PeerDisconnectedEvent += OnPeerDisconnected;
             listener.NetworkReceiveEvent += OnEventReceive;
+            
+            _playerManager.PlayerStateChanged += OnPlayerStateChanged;
+            _playerManager.PlayerPositionChanged += OnPlayerPositionChanged;
             
             while (!Console.KeyAvailable)
             {
@@ -44,23 +46,65 @@ namespace ConsoleServer
             server.Stop();
         }
 
+        private static void OnPlayerStateChanged(PlayerState packet)
+        {
+            Console.WriteLine("Updating clients with playerstate");
+            NetDataWriter writer = new NetDataWriter();
+            PlayerState.Serialize(writer, packet);
+            foreach (var player in _playerManager.Players)
+            {
+                player.Peer.Send(writer, DeliveryMethod.ReliableOrdered);
+            }
+        }
+        
+        private static void OnPlayerPositionChanged(PlayerPosition packet)
+        {
+            Console.WriteLine("Updating clients with player position");
+            NetDataWriter writer = new NetDataWriter();
+            PlayerPosition.Serialize(writer, packet);
+            foreach (var player in _playerManager.Players)
+            {
+                player.Peer.Send(writer, DeliveryMethod.ReliableOrdered);
+            }
+        }
+
+        private static void OnPlayerConnected(NetPeer peer)
+        {
+
+            Console.WriteLine("We got connection: {0}", peer.EndPoint); // Show peer ip
+            NetDataWriter writer = new NetDataWriter();                 // Create writer class
+            writer.Put((int)999); //handshake code!
+            peer.Send(writer, DeliveryMethod.ReliableOrdered);             // Send with reliability
+            _playerManager.PlayerConnected(peer);
+           
+        }
+
+        private static void OnPeerDisconnected(NetPeer peer, DisconnectInfo disconnectinfo)
+        {
+            Console.WriteLine("Player disconnected : {0}", peer.EndPoint);
+            _playerManager.PlayerDisconnected(peer);
+        }
+
         private static void OnEventReceive(NetPeer peer, NetPacketReader reader, byte channel, DeliveryMethod deliverymethod)
         {
-            ProcessPacket(reader);
+            ProcessPacket(reader, peer);
             reader.Recycle();
         }
 
-        private static void ProcessPacket(NetDataReader reader)
+        private static void ProcessPacket(NetDataReader reader, NetPeer peer)
         {
             var header = (PacketType)reader.GetInt();
             
             if (header == PacketType.PlayerState)
             {
                 var state = PlayerState.Deserialize(reader);
-                Console.WriteLine(state.UserName);
-                Console.WriteLine(state.WorldPosition.x + ", " + state.WorldPosition.y + ", " + state.WorldPosition.z);
+                _playerManager.ReceivePlayerState(state, peer);
             }
-            
+            else if (header == PacketType.PlayerPosition)
+            {
+                var state = PlayerPosition.Deserialize(reader);
+                _playerManager.ReceivePlayerPosition(state);
+            }
             else if (header == PacketType.DebugMessage)
             {
                 var msg = DebugMessage.Deserialize(reader);

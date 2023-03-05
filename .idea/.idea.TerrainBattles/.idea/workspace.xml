@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea445449-5f15-4ac5-b813-15238e27908b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Core/PlayerState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NetClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NetClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TerrainBattlesCore.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CharacterController.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CharacterController.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/PlayerInputListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/PlayerInputListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Core/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Core/PlayerPosition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Math/Point3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Math/Point3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Net/PacketType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Net/PacketType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/bin/Debug/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/bin/Debug/TerrainBattlesCore.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/ConsoleServer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/ConsoleServer.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/TerrainBattlesCore.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +32,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/CubeMarch.compute" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/ExplodeTerrain.compute" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/OnlinePlayersController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CharacterScripts/AnimationController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterAnimationState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerEffects/KnockbackHit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -73,10 +87,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="1064">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18792">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="1064" />
+      <option name="pid" value="18792" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -108,6 +122,8 @@
       <workItem from="1675627120617" duration="1795000" />
       <workItem from="1677845874264" duration="2829000" />
       <workItem from="1677864436945" duration="5684000" />
+      <workItem from="1677948834579" duration="1872000" />
+      <workItem from="1678009639266" duration="4108000" />
     </task>
     <servers />
   </component>
