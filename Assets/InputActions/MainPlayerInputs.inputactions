@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MouseEnableCamMove",
+                    "name": "Block",
                     "type": "Value",
                     "id": "7b1e05c8-5724-4456-bd0b-7a5b3d281520",
                     "expectedControlType": "Button",
@@ -288,7 +288,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "MouseEnableCamMove",
+                    "action": "Block",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

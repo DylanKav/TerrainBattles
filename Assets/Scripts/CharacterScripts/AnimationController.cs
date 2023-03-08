@@ -1,110 +1,41 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    private bool _isJumping, _isWalking, _isRunning;
     public Animator Controller;
-    private static readonly int Jumping = Animator.StringToHash("_isJumping");
-    private static readonly int Walking = Animator.StringToHash("_isWalking");
-    private static readonly int Running = Animator.StringToHash("_isRunning");
-    [SerializeField] private Rigidbody[] RagdollParts;
-    [SerializeField] private Collider[] RagdollColliders;
-    [SerializeField] private Collider playerCollider;
+    private Vector2 _input;
+    public float TransitionSpeed = 1f;
 
-    private void RagdollMode(bool isOn)
+    public void SetMovement(Vector2 input)
     {
-        Controller.enabled = !isOn;
-        //playerCollider.enabled = !isOn;
-        if (isOn)
-        {
-            foreach (var part in RagdollParts)
-            {
-                part.isKinematic = !isOn;
-            }
-
-            /*
-            foreach (var collider in RagdollColliders)
-            {
-                collider.enabled = isOn;
-            }
-            */
-        }
+        _input = input;
     }
 
-    public bool IsJumping
+    public void SetBlock(bool value)
     {
-        get
-        {
-            return _isJumping;
-        }
-        set
-        {
-            Controller.SetBool(Jumping, value);
-            _isJumping = value;
-        }
-    }
-
-    public bool IsWalking
-    {
-        get
-        {
-            return _isWalking;
-        }
-        set
-        {
-            Controller.SetBool(Walking, value);
-            _isWalking = value;
-        }
-    }
-    public bool IsRunning
-    {
-        get
-        {
-            return _isRunning;
-        }
-        set
-        {
-            Controller.SetBool(Running, value);
-            _isRunning = value;
-        }
-    }
-
-    public int GetStateAsInt()
-    {
-        int state = 0;
-        if (IsJumping) state += 1;
-        if (IsWalking) state += 2;
-        if (IsRunning) state += 4;
-        return state;
-    }
-
-    public void SetState(int value)
-    {
-        if (value == 0)
-        {
-            RagdollMode(true);
-            return;
-        }
-        if (value > 4)
-        {
-            value -= 4;
-            IsRunning = true;
-        }
-        if (value > 2)
-        {
-            value -= 2;
-            _isWalking = true;
-        }
-        if (value > 1)
-        {
-            value -= 1;
-            IsJumping = true;
-        }
+        Controller.SetBool("Block", value);
     }
     
+    public void SetAttack(bool value)
+    {
+        Controller.SetBool("Attack", value);
+    }
+    public bool GetIsGrounded()
+    {
+        return Controller.GetBool("isGrounded");
+    }
 
+    public void SetIsGrounded(bool value)
+    {
+        Controller.SetBool("isGrounded", value);
+    }
 
-    
+    private void Update()
+    {
+        Controller.SetFloat("PosX", Mathf.Lerp(Controller.GetFloat("PosX"), Mathf.Round(_input.y), TransitionSpeed * Time.deltaTime));
+        Controller.SetFloat("PosY", Mathf.Lerp(Controller.GetFloat("PosY"), Mathf.Round(_input.x), TransitionSpeed * Time.deltaTime));
+    }
 }

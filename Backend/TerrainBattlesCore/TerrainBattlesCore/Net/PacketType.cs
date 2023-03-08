@@ -8,6 +8,7 @@ namespace TerrainBattlesCore.Net
         PlayerState,
         PlayerPosition,
         DebugMessage,
+        DamagePlayer,
         TerrainManipulation,
         ChunkGeneration
     }

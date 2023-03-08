@@ -9,9 +9,12 @@ public class OnlinePlayersController : MonoBehaviour
     [SerializeField] private GameObject OnlinePlayer;
     [SerializeField]List<PlayerNode> players = new List<PlayerNode>();
     [SerializeField] private NetClient client;
+    
+    [Range(.1f, 1f)]
+    [SerializeField] private float lerpAmount = .5f;
 
 
-    private void Start()
+    private void Awake()
     {
         client.PlayerPositionChanged += OnPlayerPositionChanged;
         client.PlayerStateChanged += OnPlayerStateChanged;
@@ -51,6 +54,7 @@ public class OnlinePlayersController : MonoBehaviour
 
     private void OnPlayerStateChanged(PlayerState packet)
     {
+        CheckPlayerExists(packet.UserName);
         for (var index = 0; index < players.Count; index++)
         {
             var player = players[index];
@@ -62,15 +66,15 @@ public class OnlinePlayersController : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         foreach (var player in players)
         {
             var state = player.State;
             player.Player.transform.position = Vector3.Lerp(player.Player.transform.position, new Vector3(state.WorldPosition.x, state.WorldPosition.y,
-                state.WorldPosition.z), .9f);
+                state.WorldPosition.z), lerpAmount);
             player.Player.transform.rotation = Quaternion.Lerp(player.Player.transform.rotation, Quaternion.Euler(state.WorldRotation.x, state.WorldRotation.y,
-                state.WorldRotation.z), .9f);
+                state.WorldRotation.z), lerpAmount);
         }
     }
 }

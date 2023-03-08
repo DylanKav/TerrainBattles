@@ -15,6 +15,9 @@ public class NetClient : MonoBehaviour
     NetManager client = new NetManager(listener);
     private NetPeer server;
     [SerializeField] private Transform player;
+
+    public string PlayerUserName => _playerUserName;
+    public string _playerUserName = "Dylan";
     
     //events and delegates!
     public delegate void ReceivePlayerPosition(PlayerPosition packet);
@@ -24,6 +27,12 @@ public class NetClient : MonoBehaviour
     public event UpdatePlayerState PlayerStateChanged;
 
     private bool _isConnected;
+
+
+    void SetPlayerUsername(string username)
+    {
+        _playerUserName = username;
+    }
     
     void Start()
     {
@@ -60,7 +69,6 @@ public class NetClient : MonoBehaviour
         if ((PacketType)header == PacketType.PlayerPosition)
         {
             var position = PlayerPosition.Deserialize(reader);
-            Debug.Log("Got player position for: " + position.UserName + " their new position is " + position.WorldPosition.x + ", " + position.WorldPosition.y + ", " + position.WorldPosition.z);
             PlayerPositionChanged?.Invoke(position);
         }
         
@@ -70,7 +78,7 @@ public class NetClient : MonoBehaviour
     private void OnHandshakeReceived()
     {
         var playerState = new PlayerState();
-        playerState.UserName = "Dylan";
+        playerState.UserName = _playerUserName;
         playerState.WorldPosition = new TerrainBattlesCore.Math.Point3();
         playerState.WorldPosition.x = player.position.x;
         playerState.WorldPosition.x = player.position.y;
@@ -109,7 +117,7 @@ public class NetClient : MonoBehaviour
         while (true)
         {
             var position = new PlayerPosition();
-            position.UserName = "Dylan";
+            position.UserName = _playerUserName;
             var playerPos = player.position;
             var playerRot = player.rotation;
             position.WorldPosition.x = playerPos.x;

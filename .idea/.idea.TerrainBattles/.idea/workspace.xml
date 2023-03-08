@@ -3,22 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="ea445449-5f15-4ac5-b813-15238e27908b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InputActions/MainPlayerInputs.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputActions/MainPlayerInputs.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/NetClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NetClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TerrainBattlesCore.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OnlinePlayersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OnlinePlayersController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CharacterController.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CharacterController.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Core/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Core/PlayerPosition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Math/Point3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Math/Point3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/AnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/AnimationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/OrbitalCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/OrbitalCamera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/PlayerInputListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/PlayerInputListener.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Net/PacketType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Net/PacketType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/bin/Debug/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/bin/Debug/TerrainBattlesCore.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/ConsoleServer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/ConsoleServer.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/TerrainBattlesCore.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +25,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/b1/51ff931e/Rect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BufferTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/IKFeet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/CubeMarch.compute" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/ExplodeTerrain.compute" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MarchingCubesShaders/GenerateVoxelData.compute" root0="FORCE_HIGHLIGHTING" />
@@ -87,10 +84,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18792">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="18792" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -123,7 +120,14 @@
       <workItem from="1677845874264" duration="2829000" />
       <workItem from="1677864436945" duration="5684000" />
       <workItem from="1677948834579" duration="1872000" />
-      <workItem from="1678009639266" duration="4108000" />
+      <workItem from="1678009639266" duration="7110000" />
+      <workItem from="1678037601263" duration="3291000" />
+      <workItem from="1678126543185" duration="7049000" />
+      <workItem from="1678202575721" duration="3662000" />
+      <workItem from="1678220439729" duration="2011000" />
+      <workItem from="1678266672308" duration="1368000" />
+      <workItem from="1678269413159" duration="2094000" />
+      <workItem from="1678276983939" duration="6066000" />
     </task>
     <servers />
   </component>
@@ -152,29 +156,29 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/CharacterScripts/OrbitalCamera.cs</url>
-          <line>21</line>
+          <line>29</line>
           <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\Scripts\CharacterScripts\OrbitalCamera.cs" initialLine="21" containingFunctionPresentation="property 'Zoom'">
             <startOffsets>
-              <option value="644" />
+              <option value="882" />
             </startOffsets>
             <endOffsets>
-              <option value="674" />
+              <option value="912" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/CharacterScripts/AnimationController.cs</url>
-          <line>86</line>
-          <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\Scripts\CharacterScripts\AnimationController.cs" initialLine="84" containingFunctionPresentation="method 'SetState'">
+          <url>file://$PROJECT_DIR$/Assets/NetClient.cs</url>
+          <line>66</line>
+          <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\NetClient.cs" initialLine="58" containingFunctionPresentation="method 'OnEventReceive'">
             <startOffsets>
-              <option value="1985" />
+              <option value="1926" />
             </startOffsets>
             <endOffsets>
-              <option value="2003" />
+              <option value="1960" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
