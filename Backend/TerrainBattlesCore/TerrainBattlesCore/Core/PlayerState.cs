@@ -22,6 +22,9 @@ namespace TerrainBattlesCore.Core
         //tick multipliers
         public int Hunger;
         public int Thirst;
+        
+        //Animation
+        public PlayerAnimationState AnimationState;
 
         public PlayerState(){}
 
@@ -114,6 +117,12 @@ namespace TerrainBattlesCore.Core
             writer.Put(state.CurrentHex);
             writer.Put(state.Hunger);
             writer.Put(state.Thirst);
+            writer.Put(state.AnimationState.AnimationLayerState);
+            writer.Put(state.AnimationState.InputX);
+            writer.Put(state.AnimationState.InputY);
+            writer.Put(state.AnimationState.IsGrounded);
+            writer.Put(state.AnimationState.IsBlocking);
+            writer.Put(state.AnimationState.IsAttack);
         }
 
         public static PlayerState Deserialize(NetDataReader reader)
@@ -134,6 +143,12 @@ namespace TerrainBattlesCore.Core
             state.CurrentHex = reader.GetInt();
             state.Hunger = reader.GetInt();
             state.Thirst = reader.GetInt();
+            state.AnimationState.AnimationLayerState = reader.GetInt();
+            state.AnimationState.InputX = reader.GetFloat();
+            state.AnimationState.InputY = reader.GetFloat();
+            state.AnimationState.IsGrounded = reader.GetBool();
+            state.AnimationState.IsBlocking = reader.GetBool();
+            state.AnimationState.IsAttack = reader.GetBool();
             return state;
         }
         

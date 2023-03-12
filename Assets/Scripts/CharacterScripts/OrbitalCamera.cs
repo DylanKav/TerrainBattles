@@ -15,7 +15,8 @@ public class OrbitalCamera : MonoBehaviour
     [SerializeField] [Range(2, 15)]private float followStrength = 0.5f;
     public float horCamAngle = 0f;
     public float verCamAngle = 90f;
-    public Vector3 FocusPointOffset = Vector3.zero;
+    private Vector3 FocusPointOffset = Vector3.zero;
+    public bool isCombatEngaged = true;
 
     private void Start()
     {
@@ -42,9 +43,10 @@ public class OrbitalCamera : MonoBehaviour
 
     void Update()
     {
-        Vector3 lookDirection = player.position - orbitalCam.transform.position;
+        if (isCombatEngaged) FocusPointOffset = new Vector3(.5f, .5f, 0);
+        Vector3 lookDirection = (player.position + player.TransformDirection(FocusPointOffset) - orbitalCam.transform.position);
         lookDirection.Normalize();
-
+        
         orbitalCam.transform.rotation = isSlerpedMovement?Quaternion.Slerp(orbitalCam.transform.rotation,
             Quaternion.LookRotation(lookDirection), (followStrength * 5) * Time.deltaTime) : Quaternion.LookRotation(lookDirection);
         //orbitalCam.transform.LookAt(player.transform);

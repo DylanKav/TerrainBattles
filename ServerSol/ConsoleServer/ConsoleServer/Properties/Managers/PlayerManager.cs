@@ -30,7 +30,7 @@ namespace ConsoleServer.Properties.Managers
 
         private void PlayerStatTick(object sender, ElapsedEventArgs e)
         {
-            Console.WriteLine("Player Static Tick");
+            Console.WriteLine("Player Statistic Tick");
             foreach (var player in Players)
             {
                 player.State.TickHungerAndThirst();
@@ -74,12 +74,20 @@ namespace ConsoleServer.Properties.Managers
             for (var index = 0; index < Players.Count; index++)
             {
                 var player = Players[index];
-                if (player.State.UserName == positionChanges.UserName)
+                try
                 {
-                    if (player.State.WorldPosition == positionChanges.WorldPosition) return;
-                    player.State.WorldPosition = positionChanges.WorldPosition;
-                    Players[index] = player;
-                    PlayerPositionChanged?.Invoke(positionChanges);
+                    if (player.State.UserName == positionChanges.UserName)
+                    {
+                        if (player.State.WorldPosition == positionChanges.WorldPosition && player.State.WorldRotation == positionChanges.WorldRotation) return;
+                        player.State.WorldPosition = positionChanges.WorldPosition;
+                        player.State.AnimationState = positionChanges.AnimationState;
+                        Players[index] = player;
+                        PlayerPositionChanged?.Invoke(positionChanges);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
                 }
             }
         }

@@ -20,7 +20,7 @@ namespace ConsoleServer
 
         private static void Main(string[] args)
         {
-            server.Start(9050);
+            server.Start(7777);
             Console.WriteLine("Server started...");
             listener.ConnectionRequestEvent += request =>
             {
@@ -48,7 +48,6 @@ namespace ConsoleServer
 
         private static void OnPlayerStateChanged(PlayerState packet)
         {
-            Console.WriteLine("Updating clients with playerstate");
             NetDataWriter writer = new NetDataWriter();
             PlayerState.Serialize(writer, packet);
             foreach (var player in _playerManager.Players)
@@ -59,7 +58,6 @@ namespace ConsoleServer
         
         private static void OnPlayerPositionChanged(PlayerPosition packet)
         {
-            Console.WriteLine("Updating clients with player position");
             NetDataWriter writer = new NetDataWriter();
             PlayerPosition.Serialize(writer, packet);
             foreach (var player in _playerManager.Players)

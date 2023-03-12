@@ -18,6 +18,9 @@ public class NetClient : MonoBehaviour
 
     public string PlayerUserName => _playerUserName;
     public string _playerUserName = "Dylan";
+
+    public string address;
+    public int port;
     
     //events and delegates!
     public delegate void ReceivePlayerPosition(PlayerPosition packet);
@@ -28,6 +31,8 @@ public class NetClient : MonoBehaviour
 
     private bool _isConnected;
 
+    private AnimationController _animationController;
+
 
     void SetPlayerUsername(string username)
     {
@@ -36,8 +41,9 @@ public class NetClient : MonoBehaviour
     
     void Start()
     {
+        _animationController = player.GetComponent<AnimationController>();
         client.Start();
-        client.Connect("localhost" /* host ip or name */, 9050 /* port */, "SomeConnectionKey" /* text key or NetDataWriter */);
+        client.Connect(address /* host ip or name */, port /* port */, "SomeConnectionKey" /* text key or NetDataWriter */);
         listener.NetworkReceiveEvent += OnEventReceive;
         StartCoroutine(PollEvents());
 
@@ -96,11 +102,13 @@ public class NetClient : MonoBehaviour
     private void SendReliableDataToServer(NetDataWriter writer)
     {
         server.Send(writer, DeliveryMethod.ReliableOrdered);
+        writer.Reset();
     }
     
     private void SendUnreliableDataToServer(NetDataWriter writer)
     {
         server.Send(writer, DeliveryMethod.Sequenced);
+        writer.Reset();
     }
 
     private IEnumerator PollEvents()
@@ -126,9 +134,10 @@ public class NetClient : MonoBehaviour
             position.WorldRotation.x = playerRot.eulerAngles.x;
             position.WorldRotation.y = playerRot.eulerAngles.y;
             position.WorldRotation.z = playerRot.eulerAngles.z;
+            position.AnimationState = _animationController.GetCurrentState();
             NetDataWriter writer = new NetDataWriter();
             PlayerPosition.Serialize(writer, position);
-            SendUnreliableDataToServer(writer);
+            SendReliableDataToServer(writer);
             yield return new WaitForSeconds(.015f);
         }
     }

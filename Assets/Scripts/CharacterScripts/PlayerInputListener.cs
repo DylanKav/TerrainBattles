@@ -34,6 +34,7 @@ public class PlayerInputListener : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Rigidbody rigidBody;
 
+    [SerializeField] private EquipController equipController;
     [SerializeField] private Camera cam;
     [SerializeField] private AnimationController animController;
     
@@ -96,6 +97,7 @@ public class PlayerInputListener : MonoBehaviour
     public void Attack(InputAction.CallbackContext context)
     {
         if (_isBlocking || _attackDisabled) return;
+        equipController.Attack(0);
         animController.SetAttack(true);
         StartCoroutine(AttackDebounce(3));
         

@@ -13,6 +13,8 @@ public class OnlinePlayersController : MonoBehaviour
     [Range(.1f, 1f)]
     [SerializeField] private float lerpAmount = .5f;
 
+    [SerializeField] private bool viewOwnPlayer = true;
+
 
     private void Awake()
     {
@@ -35,6 +37,7 @@ public class OnlinePlayersController : MonoBehaviour
             newNode.State = new PlayerState();
             newNode.UserName = userName;
             newNode.Player = newPlayerObj;
+            newNode.AnimationController = newPlayerObj.GetComponent<AnimationController>();
             players.Add(newNode);
         }
     }
@@ -48,6 +51,7 @@ public class OnlinePlayersController : MonoBehaviour
             {
                 player.State.WorldPosition = packet.WorldPosition;
                 player.State.WorldRotation = packet.WorldRotation;
+                player.State.AnimationState = packet.AnimationState;
             }
         }
     }
@@ -70,11 +74,13 @@ public class OnlinePlayersController : MonoBehaviour
     {
         foreach (var player in players)
         {
+            if (player.UserName == client.PlayerUserName && !viewOwnPlayer) continue;
             var state = player.State;
             player.Player.transform.position = Vector3.Lerp(player.Player.transform.position, new Vector3(state.WorldPosition.x, state.WorldPosition.y,
                 state.WorldPosition.z), lerpAmount);
             player.Player.transform.rotation = Quaternion.Lerp(player.Player.transform.rotation, Quaternion.Euler(state.WorldRotation.x, state.WorldRotation.y,
                 state.WorldRotation.z), lerpAmount);
+            player.AnimationController.SetAnimationState(player.State.AnimationState);
         }
     }
 }
@@ -85,4 +91,5 @@ struct PlayerNode
     public string UserName;
     public GameObject Player;
     public PlayerState State;
+    public AnimationController AnimationController;
 }

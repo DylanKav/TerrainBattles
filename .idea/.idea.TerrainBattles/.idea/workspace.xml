@@ -3,16 +3,28 @@
   <component name="ChangeListManager">
     <list default="true" id="ea445449-5f15-4ac5-b813-15238e27908b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TerrainBattles/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputActions/MainPlayerInputs.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputActions/MainPlayerInputs.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/GenericPlayerMovement.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/GenericPlayerMovement.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/NetClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NetClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/OnlinePlayersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OnlinePlayersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TerrainBattlesCore.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CharacterController.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CharacterController.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/AnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/AnimationController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/OrbitalCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/OrbitalCamera.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/PlayerInputListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/PlayerInputListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Net/PacketType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Net/PacketType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Core/PlayerPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Core/PlayerPosition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Core/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/Core/PlayerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/bin/Debug/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/bin/Debug/TerrainBattlesCore.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/TerrainBattlesCore/TerrainBattlesCore/obj/Debug/TerrainBattlesCore.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/Properties/Managers/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/Properties/Managers/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/ConsoleServer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/ConsoleServer.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/TerrainBattlesCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/bin/Debug/TerrainBattlesCore.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSol/ConsoleServer/ConsoleServer/obj/Debug/ConsoleServer.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
@@ -32,10 +44,18 @@
     <setting file="file://$PROJECT_DIR$/Assets/OnlinePlayersController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CharacterScripts/AnimationController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterAnimationState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyAI/HitRegister.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerEffects/KnockbackHit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Staves.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.7.3/Runtime/BurstCompileAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.7.3/Tests/Runtime/Shared/090-Vectors-HashCodes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/BaseInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIElements/PanelRaycaster.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Graphic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Toggle/ToggleGroupTests.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -128,6 +148,10 @@
       <workItem from="1678266672308" duration="1368000" />
       <workItem from="1678269413159" duration="2094000" />
       <workItem from="1678276983939" duration="6066000" />
+      <workItem from="1678311472875" duration="1009000" />
+      <workItem from="1678438362437" duration="8941000" />
+      <workItem from="1678644111833" duration="2627000" />
+      <workItem from="1678648026187" duration="1698000" />
     </task>
     <servers />
   </component>
@@ -156,29 +180,42 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/CharacterScripts/OrbitalCamera.cs</url>
-          <line>29</line>
+          <line>30</line>
           <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\Scripts\CharacterScripts\OrbitalCamera.cs" initialLine="21" containingFunctionPresentation="property 'Zoom'">
             <startOffsets>
-              <option value="882" />
+              <option value="923" />
             </startOffsets>
             <endOffsets>
-              <option value="912" />
+              <option value="953" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/NetClient.cs</url>
-          <line>66</line>
+          <line>72</line>
           <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\NetClient.cs" initialLine="58" containingFunctionPresentation="method 'OnEventReceive'">
             <startOffsets>
-              <option value="1926" />
+              <option value="2101" />
             </startOffsets>
             <endOffsets>
-              <option value="1960" />
+              <option value="2135" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/EquipController.cs</url>
+          <line>10</line>
+          <properties documentPath="D:\TerrainBattles\TerrainBattles\Assets\EquipController.cs" initialLine="10" containingFunctionPresentation="method 'Attack'">
+            <startOffsets>
+              <option value="223" />
+            </startOffsets>
+            <endOffsets>
+              <option value="293" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
